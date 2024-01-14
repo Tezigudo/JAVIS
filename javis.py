@@ -26,6 +26,7 @@ def record_text():
                 print("Im listening")
                 audio2 = r.listen(source2)
                 MyText = r.recognize_google(audio2)
+                print(f'You say: {MyText}')
 
                 return MyText
         except sr.RequestError as e:
@@ -43,8 +44,6 @@ def send_to_chatgpt(messages, model="gpt-3.5-turbo"):
         n=1,
         stop=None,
         temperature=0.5)
-    print(resp)
-
     message = resp.choices[0].message.content
     messages.append(resp.choices[0].message)
 
